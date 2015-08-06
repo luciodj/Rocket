@@ -34,18 +34,18 @@
             <setting name="CLKOUTEN" option="OFF"/>
             <setting name="WRT" option="OFF"/>
             <setting name="LPBOR" option="OFF"/>
-            <setting name="PPS1WAY" option="ON"/>
+            <setting name="PPS1WAY" option="OFF"/>
             <setting name="LVP" option="ON"/>
             <setting name="ZCD" option="OFF"/>
             <setting name="STVREN" option="ON"/>
-            <setting name="PLLEN" option="ON"/>
+            <setting name="PLLEN" option="OFF"/>
             <setting name="BORV" option="LO"/>
             <setting name="WDTCWS" option="WDTCWSSW"/>
             <setting name="WDTCCS" option="SWC"/>
             <setting name="WDTE" option="OFF"/>
             <setting name="WDTCPS" option="WDTCPS1F"/>
             <setting name="generateConfigBits" option="true"/>
-            <file checksum="4060573885" modified="false" name="mcc.c" path="mcc_generated_files/mcc.c"/>
+            <file checksum="1128626949" modified="false" name="mcc.c" path="mcc_generated_files/mcc.c"/>
             <file checksum="4262200750" modified="false" name="mcc.h" path="mcc_generated_files/mcc.h"/>
         </manager>
     </managers>

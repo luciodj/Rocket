@@ -59,11 +59,11 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 // CONFIG2
 #pragma config WRT = OFF    // Flash Memory Self-Write Protection->Write protection off
 #pragma config LPBOR = OFF    // Low-Power Brown Out Reset->Low-Power BOR is disabled
-#pragma config PPS1WAY = OFF    // Peripheral Pin Select one-way control->The PPSLOCK bit can be set and cleared repeatedly by software
+#pragma config PPS1WAY = ON    // Peripheral Pin Select one-way control->The PPSLOCK bit cannot be cleared once it is set by software
 #pragma config LVP = ON    // Low-Voltage Programming Enable->Low-voltage programming enabled
 #pragma config ZCD = OFF    // Zero Cross Detect Disable Bit->ZCD disable.  ZCD can be enabled by setting the ZCDSEN bit of ZCDCON
 #pragma config STVREN = ON    // Stack Overflow/Underflow Reset Enable->Stack Overflow or Underflow will cause a Reset
-#pragma config PLLEN = OFF    // PLL Enable Bit->4x PLL is enabled when software sets the SPLLEN bit
+#pragma config PLLEN = ON    // PLL Enable Bit->4x PLL is always enabled
 #pragma config BORV = LO    // Brown-out Reset Voltage Selection->Brown-out Reset Voltage (Vbor), low trip point selected.
 
 // CONFIG3
@@ -77,11 +77,12 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 void SYSTEM_Initialize(void) {
     OSCILLATOR_Initialize();
     PIN_MANAGER_Initialize();
+    SPI_Initialize();
 }
 
 void OSCILLATOR_Initialize(void) {
-    // SPLLEN disabled; SCS INTOSC; IRCF 500KHz_HF; 
-    OSCCON = 0x52;
+    // SPLLEN disabled; SCS INTOSC; IRCF 8MHz_HF; 
+    OSCCON = 0x72;
     // OSTS intosc; HFIOFR disabled; HFIOFS not0.5percent_acc; PLLR disabled; MFIOFR disabled; HFIOFL not2percent_acc; LFIOFR disabled; 
     OSCSTAT = 0x00;
     // TUN 0x0; 
