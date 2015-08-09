@@ -47,7 +47,7 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 #include "mcc_generated_files/mcc.h"
 #include "oled.h"
 
-const uint8_t logo[];     // image data (remember to include logo.c in project sources
+const uint8_t font[];     // image data (remember to include logo.c in project sources
 
 void main(void)
 {
@@ -56,23 +56,25 @@ void main(void)
 
     while (1)
     {
-        OLED_PutPicture( logo);
-        __delay_ms( 2000);
+//        OLED_PutPicture( font);
+//        __delay_ms( 1000);
+        OLED_Clear();
+        OLED_Puts( 4, 2, "Hello World");
         
         OLED_Command( SSD1306_INVERTDISPLAY);
         __delay_ms( 2000);
         OLED_Command( SSD1306_NORMALDISPLAY);
         __delay_ms( 2000);
 
-       int i;
-       for( i=0xAF; i>0x00; i--){
-            OLED_SetContrast( i);
-            __delay_ms( 20);
-            }
-       for( i=0x00; i<0xAF; i++){
-            OLED_SetContrast( i);
-            __delay_ms( 20);
-            }
+//       int i;
+//       for( i=0xAF; i>0x00; i--){
+//            OLED_SetContrast( i);
+//            __delay_ms( 20);
+//            }
+//       for( i=0x00; i<0xAF; i++){
+//            OLED_SetContrast( i);
+//            __delay_ms( 20);
+//            }
     }
 }
     /**

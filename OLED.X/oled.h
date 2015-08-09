@@ -65,3 +65,8 @@ void OLED_PutPicture( const uint8_t *);
 // control contrast in steps  from 1 to 256
 void OLED_SetContrast( uint8_t);
 
+void OLED_Putchar( char ch);
+
+void OLED_Puts( char x, char y, char *s);
+
+void OLED_Clear( void);
