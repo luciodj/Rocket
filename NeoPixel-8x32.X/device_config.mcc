@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<configuration device="PIC16F1619" mcc_version="v2.25.2">
+    <managers>
+        <manager generated="true" name="Pin Manager" reloadPin="manual">
+            <setting name="package" option="PDIP20"/>
+            <setting name="sorting" option="true"/>
+            <resource customName="SDO" digital="true" direction="OUTPUT" function="SDO" ioc="0" module="MSSP" name="RC5" start="false" type="pin" wpu="false"/>
+            <file checksum="1517868167" modified="false" name="pin_manager.c" path="mcc_generated_files/pin_manager.c"/>
+            <file checksum="1637912819" modified="false" name="pin_manager.h" path="mcc_generated_files/pin_manager.h"/>
+        </manager>
+        <manager generated="true" name="System" reloadPin="manual">
+            <initializer comment="32MHz" name="Initialize">
+                <setting name="SCS" option="FOSC" register="OSCCON"/>
+                <setting name="SPLLEN" option="disabled" register="OSCCON"/>
+                <setting name="IRCF" option="8MHz_HF" register="OSCCON"/>
+                <setting name="LFIOFR" option="disabled" register="OSCSTAT"/>
+                <setting name="HFIOFL" option="not2percent_acc" register="OSCSTAT"/>
+                <setting name="OSTS" option="intosc" register="OSCSTAT"/>
+                <setting name="PLLR" option="disabled" register="OSCSTAT"/>
+                <setting name="HFIOFS" option="not0.5percent_acc" register="OSCSTAT"/>
+                <setting name="HFIOFR" option="disabled" register="OSCSTAT"/>
+                <setting name="MFIOFR" option="disabled" register="OSCSTAT"/>
+                <setting name="TUN" option="0x0" register="OSCTUNE"/>
+                <additionalSetting name="pllMultiplier" option=""/>
+                <additionalSetting name="extclk" option="1.0 MHz"/>
+            </initializer>
+            <setting name="CLKOUTEN" option="OFF"/>
+            <setting name="FCMEN" option="ON"/>
+            <setting name="MCLRE" option="ON"/>
+            <setting name="FOSC" option="INTOSC"/>
+            <setting name="BOREN" option="ON"/>
+            <setting name="IESO" option="ON"/>
+            <setting name="PWRTE" option="OFF"/>
+            <setting name="CP" option="OFF"/>
+            <setting name="PLLEN" option="ON"/>
+            <setting name="LPBOR" option="OFF"/>
+            <setting name="LVP" option="ON"/>
+            <setting name="WRT" option="OFF"/>
+            <setting name="ZCD" option="OFF"/>
+            <setting name="STVREN" option="ON"/>
+            <setting name="PPS1WAY" option="ON"/>
+            <setting name="BORV" option="LO"/>
+            <setting name="WDTCWS" option="WDTCWSSW"/>
+            <setting name="WDTCPS" option="WDTCPS1F"/>
+            <setting name="WDTE" option="OFF"/>
+            <setting name="WDTCCS" option="SWC"/>
+            <setting name="generateConfigBits" option="true"/>
+            <file checksum="3951855733" modified="false" name="mcc.c" path="mcc_generated_files/mcc.c"/>
+            <file checksum="1346767806" modified="false" name="mcc.h" path="mcc_generated_files/mcc.h"/>
+        </manager>
+    </managers>
+    <modules>
+        <module generated="true" mode="SPI Master" name="MSSP" order="0" reloadPin="manual" type="mssp">
+            <initializer comment="8MHz" name="Initialize">
+                <setting name="R_nW" option="write_noTX" register="SSP1STAT"/>
+                <setting name="P" option="stopbit_notdetected" register="SSP1STAT"/>
+                <setting name="S" option="startbit_notdetected" register="SSP1STAT"/>
+                <setting name="BF" option="RCinprocess_TXcomplete" register="SSP1STAT"/>
+                <setting name="SMP" option="Sample At Middle" register="SSP1STAT"/>
+                <setting name="UA" option="dontupdate" register="SSP1STAT"/>
+                <setting name="CKE" option="Active to Idle" register="SSP1STAT"/>
+                <setting name="D_nA" option="lastbyte_address" register="SSP1STAT"/>
+                <setting name="SSPEN" option="enabled" register="SSP1CON1"/>
+                <setting name="WCOL" option="no_collision" register="SSP1CON1"/>
+                <setting name="CKP" option="Idle:Low, Active:High" register="SSP1CON1"/>
+                <setting name="SSPM" option="FOSC/4" register="SSP1CON1"/>
+                <setting name="SSPOV" option="no_overflow" register="SSP1CON1"/>
+                <setting name="SSP1ADD" option="0" register="SSP1ADD"/>
+                <additionalSetting name="frequency" option="8.0 MHz"/>
+            </initializer>
+            <setting name="mode" option="false"/>
+            <setting name="SSPI" option="false"/>
+            <setting name="BCLI" option="false"/>
+            <setting name="WriteBufferSize" option="8"/>
+            <setting name="ReadBufferSize" option="8"/>
+            <file checksum="2913946567" modified="false" name="spi.c" path="mcc_generated_files/spi.c"/>
+            <file checksum="2374938908" modified="false" name="spi.h" path="mcc_generated_files/spi.h"/>
+        </module>
+        <module generated="true" mode="Timer" name="TMR2" order="1" reloadPin="manual" type="tmr_mid2">
+            <initializer comment="10Hz refresh period" name="Initialize">
+                <setting name="TMR2ON" option="off" register="T2CON"/>
+                <setting name="T2OUTPS" option="1:16" register="T2CON"/>
+                <setting name="T2CKPS" option="1:64" register="T2CON"/>
+                <setting name="T2CS" option="FOSC/4" register="T2CLKCON"/>
+                <setting name="T2PSYNC" option="Not Synchronized" register="T2HLT"/>
+                <setting name="T2CKPOL" option="Rising Edge" register="T2HLT"/>
+                <setting name="T2CKSYNC" option="Not Synchronized" register="T2HLT"/>
+                <setting name="T2MODE" option="Software control" register="T2HLT"/>
+                <setting name="T2RSEL" option="T2" register="T2RST"/>
+                <setting name="T2PR" option="77" register="T2PR"/>
+                <setting name="TMR2" option="0x0" register="T2TMR"/>
+                <additionalSetting name="2TOUTPS" option="1:16"/>
+                <additionalSetting name="period" option="9.984 ms"/>
+                <additionalSetting name="2TPSYNC" option="Not Synchronized"/>
+                <additionalSetting name="maxPeriodChanged" option="32.0 us"/>
+                <additionalSetting name="minPeriodChanged" option="125.0 ns"/>
+                <additionalSetting name="timerstart" option="enabled"/>
+                <additionalSetting name="2TCKPS" option="1:64"/>
+                <additionalSetting name="modeChanged" option="Roll over pulse"/>
+            </initializer>
+            <setting name="TMRI" option="false"/>
+            <setting name="ticker" option="0"/>
+            <file checksum="1247021254" modified="false" name="tmr2.c" path="mcc_generated_files/tmr2.c"/>
+            <file checksum="3225863186" modified="false" name="tmr2.h" path="mcc_generated_files/tmr2.h"/>
+        </module>
+    </modules>
+</configuration>
