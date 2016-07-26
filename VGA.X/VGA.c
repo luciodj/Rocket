@@ -20,7 +20,7 @@
 #define VGA_CLK     80000000                // Hz
 #define VGA_LINE_T  0.00003177              // 31.777 us
 #define LINE_C      (VGA_LINE_T * VGA_CLK)  // clock pulses in a line
-#define LINE_N   525                        // number of lines in VGA frame
+#define LINE_N      525                     // number of lines in VGA frame
 
 #define VRES    ((YMAX+1)*8)                // each line repeat twice ->400 (< LINE_N)
 #define HRES    ((XMAX+1)*8)                // must be < LINE_C
@@ -41,7 +41,6 @@
 
 char VMap[ VRES/8 * (HRES/8)]; // image buffer
 
-
 char *VPtr, *LPtr;
 const char* pRFont;
 volatile short VCount;
@@ -60,14 +59,13 @@ short VC[4] = { VSYNC_N,  POSTEQ_N, VRES*2,  PREEQ_N};
                         asm("movwf TX1REG &0x7f"); \
                         NOP(); \
                         NOP();
-//                        NOP();
 
 void interrupt VGA( void)
 {
     static char line = 16;  
     switch ( VState) {
-        case SV_LINE:   // 3   serialize the current line
-            VPtr = LPtr;            // reset text pointer
+        case SV_LINE:       // 3   serialize the current line
+            VPtr = LPtr;    // reset text pointer
             // pre load FSR0 with _pRFont (pointer into the font)   
             asm("movlb 0");
             asm("movf _pRFont, w");
@@ -106,32 +104,27 @@ void interrupt VGA( void)
                 break;
             if (line)
                 pRFont += F_SIZE;   // advance font pointer
-            else
-            {
+            else {
                 pRFont = Font8x8;   // reset font pointer
                 line = 16;          // reset font row counter
                 LPtr += HRES/8;     // advance text pointer
             }
             break;
-        case SV_PREEQ:  // 0
-            // prepare for the new frame
-            VPtr = VMap;
+        case SV_PREEQ:      // 0
+            VPtr = VMap;    // prepare for the new frame
             break;
-        case SV_SYNC:   // 1
-            // vertical sync pulse
-            VS_SetLow();
+        case SV_SYNC:       // 1
+            VS_SetLow();    // vertical sync pulse
             break;
-        case SV_POSTEQ: // 2
-          // horizontal sync pulse
-            VS_SetHigh();
+        case SV_POSTEQ:     // 2
+            VS_SetHigh();   // horizontal sync pulse
             LPtr = VMap;           // reset text pointer to top of page
             break;
     } //switch
     // advance the state machine
-    if ( --VCount == 0)
-    {
-        VCount = VC[ VState&3];
-        VState = VS[ VState&3];
+    if ( --VCount == 0) {
+        VCount = VC[ VState & 3];
+        VState = VS[ VState & 3];
     }
     PIR1bits.TMR2IF = 0;
 } // VGA state machine
