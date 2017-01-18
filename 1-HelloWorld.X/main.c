@@ -1,9 +1,6 @@
 /**
   Generated Main Source File
 
-  Company:
-    Microchip Technology Inc.
-
   File Name:
     main.c
 
@@ -13,13 +10,13 @@
   Description:
     This header file provides implementations for driver APIs for all modules selected in the GUI.
     Generation Information :
-        Product Revision  :  MPLAB® Code Configurator - v2.10
-        Device            :  PIC16F1709
+        Product Revision  :  MPLAB® Code Configurator - v3.26
+        Device            :  PIC16F1619
         Driver Version    :  2.00
     The generated drivers are tested against the following:
-        Compiler          :  XC8 v1.34
-        MPLAB             :  MPLAB X 2.35
-*/
+        Compiler          :  XC8 v1.40
+        MPLAB             :  MPLAB X 3.50
+ */
 
 /*
 Copyright (c) 2013 - 2014 released Microchip Technology Inc.  All rights reserved.
@@ -42,23 +39,21 @@ INCLUDING BUT NOT LIMITED TO ANY INCIDENTAL, SPECIAL, INDIRECT, PUNITIVE OR
 CONSEQUENTIAL DAMAGES, LOST PROFITS OR LOST DATA, COST OF PROCUREMENT OF
 SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 (INCLUDING BUT NOT LIMITED TO ANY DEFENSE THEREOF), OR OTHER SIMILAR COSTS.
-*/
+ */
 
 #include "mcc_generated_files/mcc.h"
 
 /*
                          Main application
  */
-void main(void)
-{
+void main(void) {
     SYSTEM_Initialize();
 
-    while (1)
-    {
-        __delay_ms(500);    // builtin function 
+    while (1) {
         LED_Toggle();
+        __delay_ms(500); // loop for 500ms -- compiler builtin
     }
 }
 /**
  End of File
-*/
+ */
