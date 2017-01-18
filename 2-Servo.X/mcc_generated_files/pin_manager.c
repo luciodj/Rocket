@@ -59,7 +59,7 @@ void PIN_MANAGER_Initialize(void) {
     TRISx registers
      */
     TRISA = 0x37;
-    TRISB = 0xF0;
+    TRISB = 0xE0;
     TRISC = 0xFF;
 
     /**
@@ -96,7 +96,7 @@ void PIN_MANAGER_Initialize(void) {
     PPSLOCKbits.PPSLOCKED = 0x00; // unlock PPS
 
     T2PPS = 0x05; //RA5->TMR2:T2IN;
-    RA5PPS = 0x0C; //RA5->CCP1:CCP1;
+    RB4PPS = 0x0C; //RB4->CCP1:CCP1;
 
     PPSLOCK = 0x55;
     PPSLOCK = 0xAA;

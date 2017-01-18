@@ -69,6 +69,18 @@
 #define RA5_SetPullup()     do { WPUAbits.WPUA5 = 1; } while(0)
 #define RA5_ResetPullup()   do { WPUAbits.WPUA5 = 0; } while(0)
 
+// get/set RB4 procedures
+#define RB4_SetHigh()    do { LATBbits.LATB4 = 1; } while(0)
+#define RB4_SetLow()   do { LATBbits.LATB4 = 0; } while(0)
+#define RB4_Toggle()   do { LATBbits.LATB4 = ~LATBbits.LATB4; } while(0)
+#define RB4_GetValue()         PORTBbits.RB4
+#define RB4_SetDigitalInput()   do { TRISBbits.TRISB4 = 1; } while(0)
+#define RB4_SetDigitalOutput()  do { TRISBbits.TRISB4 = 0; } while(0)
+#define RB4_SetPullup()     do { WPUBbits.WPUB4 = 1; } while(0)
+#define RB4_ResetPullup()   do { WPUBbits.WPUB4 = 0; } while(0)
+#define RB4_SetAnalogMode() do { ANSELBbits.ANSB4 = 1; } while(0)
+#define RB4_SetDigitalMode()do { ANSELBbits.ANSB4 = 0; } while(0)
+
 // get/set Potentiometer aliases
 #define Potentiometer_TRIS               TRISCbits.TRISC0
 #define Potentiometer_LAT                LATCbits.LATC0
