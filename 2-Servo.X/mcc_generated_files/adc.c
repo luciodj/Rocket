@@ -19,7 +19,7 @@
     The generated drivers are tested against the following:
         Compiler          :  XC8 1.35
         MPLAB             :  MPLAB X 3.40
-*/
+ */
 
 /*
     (c) 2016 Microchip Technology Inc. and its subsidiaries. You may use this
@@ -41,11 +41,11 @@
 
     MICROCHIP PROVIDES THIS SOFTWARE CONDITIONALLY UPON YOUR ACCEPTANCE OF THESE
     TERMS.
-*/
+ */
 
 /**
   Section: Included Files
-*/
+ */
 
 #include <xc.h>
 #include "adc.h"
@@ -53,68 +53,61 @@
 
 /**
   Section: Macro Declarations
-*/
+ */
 
 #define ACQ_US_DELAY 5
 
 /**
   Section: ADC Module APIs
-*/
+ */
 
-void ADC_Initialize(void)
-{
+void ADC_Initialize(void) {
     // set the ADC to the options selected in the User Interface
-    
-    // GO_nDONE stop; ADON enabled; CHS AN0; 
+
+    // GO_nDONE stop; ADON enabled; CHS AN0;
     ADCON0 = 0x01;
-    
-    // ADFM left; ADPREF VDD; ADCS FOSC/8; 
+
+    // ADFM left; ADPREF VDD; ADCS FOSC/8;
     ADCON1 = 0x10;
-    
-    // TRIGSEL TMR2_postscaled; 
+
+    // TRIGSEL TMR2_postscaled;
     ADCON2 = 0x28;
-    
-    // ADRESL 0; 
+
+    // ADRESL 0;
     ADRESL = 0x00;
-    
-    // ADRESH 0; 
+
+    // ADRESH 0;
     ADRESH = 0x00;
-    
+
     // Enabling ADC interrupt.
     PIE1bits.ADIE = 1;
 }
 
-void ADC_SelectChannel(adc_channel_t channel)
-{
+void ADC_SelectChannel(adc_channel_t channel) {
     // select the A/D channel
-    ADCON0bits.CHS = channel;    
+    ADCON0bits.CHS = channel;
     // Turn on the ADC module
-    ADCON0bits.ADON = 1;  
+    ADCON0bits.ADON = 1;
 }
 
-void ADC_StartConversion()
-{
+void ADC_StartConversion() {
     // Start the conversion
     ADCON0bits.GO_nDONE = 1;
 }
 
-
-bool ADC_IsConversionDone()
-{
+bool ADC_IsConversionDone() {
     // Start the conversion
     return (!ADCON0bits.GO_nDONE);
 }
 
-adc_result_t ADC_GetConversionResult(void)
-{
+adc_result_t ADC_GetConversionResult(void) {
     // Conversion finished, return the result
     return ((ADRESH << 8) + ADRESL);
 }
 
-adc_result_t ADC_GetConversion(adc_channel_t channel)
-{
+adc_result_t ADC_GetConversion(adc_channel_t channel) {
     // select the A/D channel
-    ADCON0bits.CHS = channel;    
+    ADCON0bits.CHS = channel;
 
     // Turn on the ADC module
     ADCON0bits.ADON = 1;
@@ -125,20 +118,13 @@ adc_result_t ADC_GetConversion(adc_channel_t channel)
     ADCON0bits.GO_nDONE = 1;
 
     // Wait for the conversion to finish
-    while (ADCON0bits.GO_nDONE)
-    {
+    while (ADCON0bits.GO_nDONE) {
     }
     // Conversion finished, return the result
     return ((ADRESH << 8) + ADRESL);
 
 }
 
-
-void ADC_ISR(void)
-{
-    // Clear the ADC interrupt flag
-    PIR1bits.ADIF = 0;
-}
 /**
  End of File
-*/
+ */

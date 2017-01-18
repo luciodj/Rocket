@@ -63,7 +63,10 @@ void main(void) {
     }
 }
 
-void ADC1_ISR(void) { // read potentiometer value and translate to servo angle
+// remove or comment out default ISR generated in adc.c
+// read potentiometer value and translate to servo angle
+//
+void ADC_ISR(void) {
     uint16_t duty;
     duty = SERVO_MIN + (ADC_GetConversion(Potentiometer) >> 2);
     if (duty > SERVO_MAX)
