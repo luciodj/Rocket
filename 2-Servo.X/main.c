@@ -1,9 +1,6 @@
 /**
   Generated Main Source File
 
-  Company:
-    Microchip Technology Inc.
-
   File Name:
     main.c
 
@@ -13,13 +10,13 @@
   Description:
     This header file provides implementations for driver APIs for all modules selected in the GUI.
     Generation Information :
-        Product Revision  :  MPLAB® Code Configurator - v2.25
-        Device            :  PIC16F1709
+        Product Revision  :  MPLAB® Code Configurator - v3.26
+        Device            :  PIC16F1619
         Driver Version    :  2.00
     The generated drivers are tested against the following:
-        Compiler          :  XC8 v1.34
-        MPLAB             :  MPLAB X 2.26
-*/
+        Compiler          :  XC8 v1.40
+        MPLAB             :  MPLAB X 3.50
+ */
 
 /*
 Copyright (c) 2013 - 2014 released Microchip Technology Inc.  All rights reserved.
@@ -42,19 +39,18 @@ INCLUDING BUT NOT LIMITED TO ANY INCIDENTAL, SPECIAL, INDIRECT, PUNITIVE OR
 CONSEQUENTIAL DAMAGES, LOST PROFITS OR LOST DATA, COST OF PROCUREMENT OF
 SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 (INCLUDING BUT NOT LIMITED TO ANY DEFENSE THEREOF), OR OTHER SIMILAR COSTS.
-*/
+ */
 
 #include "mcc_generated_files/mcc.h"
 
-#define TCLK            _XTAL_FREQ   // 8 MHz
-#define PERIOD          (unsigned)(TCLK /64 / 4 /125)      // PR2 (for 8ms=125Hz)
-#define DCMAX           (unsigned)(PERIOD * 4)            
+#define TCLK            _XTAL_FREQ   // 8 MHz, defined in mcc.h
+#define PERIOD          (unsigned)(TCLK /64 / 4 /125)     // 8ms = 125Hz
+#define DCMAX           (unsigned)(PERIOD * 4)
 #define SERVO_MIDDLE    (unsigned)(DCMAX * 14/80)         // 1.4ms
 #define SERVO_MIN       (unsigned)(DCMAX *  4/80)         // 0.4ms
 #define SERVO_MAX       (unsigned)(DCMAX * 24/80)         // 2.4ms
 
-void main(void)
-{
+void main(void) {
     // configure ADC to trigger from Timer2 and generate an interrupt
     // configure PWM1 for an 8ms period, output on pin RC5
     SYSTEM_Initialize();
@@ -63,22 +59,20 @@ void main(void)
     INTERRUPT_GlobalInterruptEnable();
     INTERRUPT_PeripheralInterruptEnable();
 
-    while (1)
-    {
+    while (1) {
     }
 }
 
-void ADC1_ISR( void)
-{ // read potentiometer value and translate to servo angle
+void ADC1_ISR(void) { // read potentiometer value and translate to servo angle
     uint16_t duty;
-    duty = SERVO_MIN + ( ADC1_GetConversion( Potentiometer) >> 2);
-    if ( duty > SERVO_MAX)
+    duty = SERVO_MIN + (ADC_GetConversion(Potentiometer) >> 2);
+    if (duty > SERVO_MAX)
         duty = SERVO_MAX;
-    PWM1_DutyValueSet( duty);
+    PWM1_LoadDutyValue(duty);
 
     // Clear the ADC interrupt flag
     PIR1bits.ADIF = 0;
 }
 /**
  End of File
-*/
+ */

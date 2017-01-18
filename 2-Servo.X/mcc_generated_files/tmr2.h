@@ -8,40 +8,39 @@
     tmr2.h
 
   @Summary
-    This is the generated header file for the TMR2 driver using MPLAB� Code Configurator
+    This is the generated header file for the TMR2 driver using MPLAB(c) Code Configurator
 
   @Description
     This header file provides APIs for TMR2.
     Generation Information :
-        Product Revision  :  MPLAB� Code Configurator - v2.25.2
+        Product Revision  :  MPLAB(c) Code Configurator - 4.15
         Device            :  PIC16F1619
         Driver Version    :  1.00
     The generated drivers are tested against the following:
-        Compiler          :  XC8 v1.34
-        MPLAB             :  MPLAB X v2.35 or v3.00
+        Compiler          :  XC8 1.35
+        MPLAB             :  MPLAB X 3.40
  */
 
 /*
-Copyright (c) 2013 - 2015 released Microchip Technology Inc.  All rights reserved.
+    (c) 2016 Microchip Technology Inc. and its subsidiaries. You may use this
+    software and any derivatives exclusively with Microchip products.
 
-Microchip licenses to you the right to use, modify, copy and distribute
-Software only when embedded on a Microchip microcontroller or digital signal
-controller that is integrated into your product or third party product
-(pursuant to the sublicense terms in the accompanying license agreement).
+    THIS SOFTWARE IS SUPPLIED BY MICROCHIP "AS IS". NO WARRANTIES, WHETHER
+    EXPRESS, IMPLIED OR STATUTORY, APPLY TO THIS SOFTWARE, INCLUDING ANY IMPLIED
+    WARRANTIES OF NON-INFRINGEMENT, MERCHANTABILITY, AND FITNESS FOR A
+    PARTICULAR PURPOSE, OR ITS INTERACTION WITH MICROCHIP PRODUCTS, COMBINATION
+    WITH ANY OTHER PRODUCTS, OR USE IN ANY APPLICATION.
 
-You should refer to the license agreement accompanying this Software for
-additional information regarding your rights and obligations.
+    IN NO EVENT WILL MICROCHIP BE LIABLE FOR ANY INDIRECT, SPECIAL, PUNITIVE,
+    INCIDENTAL OR CONSEQUENTIAL LOSS, DAMAGE, COST OR EXPENSE OF ANY KIND
+    WHATSOEVER RELATED TO THE SOFTWARE, HOWEVER CAUSED, EVEN IF MICROCHIP HAS
+    BEEN ADVISED OF THE POSSIBILITY OR THE DAMAGES ARE FORESEEABLE. TO THE
+    FULLEST EXTENT ALLOWED BY LAW, MICROCHIP'S TOTAL LIABILITY ON ALL CLAIMS IN
+    ANY WAY RELATED TO THIS SOFTWARE WILL NOT EXCEED THE AMOUNT OF FEES, IF ANY,
+    THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
 
-SOFTWARE AND DOCUMENTATION ARE PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND,
-EITHER EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION, ANY WARRANTY OF
-MERCHANTABILITY, TITLE, NON-INFRINGEMENT AND FITNESS FOR A PARTICULAR PURPOSE.
-IN NO EVENT SHALL MICROCHIP OR ITS LICENSORS BE LIABLE OR OBLIGATED UNDER
-CONTRACT, NEGLIGENCE, STRICT LIABILITY, CONTRIBUTION, BREACH OF WARRANTY, OR
-OTHER LEGAL EQUITABLE THEORY ANY DIRECT OR INDIRECT DAMAGES OR EXPENSES
-INCLUDING BUT NOT LIMITED TO ANY INCIDENTAL, SPECIAL, INDIRECT, PUNITIVE OR
-CONSEQUENTIAL DAMAGES, LOST PROFITS OR LOST DATA, COST OF PROCUREMENT OF
-SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
-(INCLUDING BUT NOT LIMITED TO ANY DEFENSE THEREOF), OR OTHER SIMILAR COSTS.
+    MICROCHIP PROVIDES THIS SOFTWARE CONDITIONALLY UPON YOUR ACCEPTANCE OF THESE
+    TERMS.
  */
 
 #ifndef _TMR2_H
@@ -176,7 +175,7 @@ extern "C" {
         TMR2_OS_STARTS_TMRON_ERSHIGH = 0x16,
 
         /* One shot mode indicates that the Timer starts
-          when a TMRx_ers = 0,ON = 1 and resets upon TMRx_ers =1 
+          when a TMRx_ers = 0,ON = 1 and resets upon TMRx_ers =1
          */
         TMR2_OS_STARTS_TMRON_ERSLOW = 0x17,
 
@@ -195,7 +194,7 @@ extern "C" {
         TMR2_MS_STARTS_TMRON_ERSFALLINGEDGEDETECT = 0x12,
 
         /* Mono Stable mode indicates that the Timer starts
-           when  either a rising or falling edge is detected on TMRx_ers 
+           when  either a rising or falling edge is detected on TMRx_ers
            and ON = 1
          */
         TMR2_MS_STARTS_TMRON_ERSBOTHEDGE = 0x13
@@ -220,61 +219,63 @@ extern "C" {
          */
         TMR2_T2IN,
 
-        /* C1_OUT_SYNC is the Timer external reset source 
+        /* C1_OUT_SYNC is the Timer external reset source
          */
         TMR2_C1_OUT_SYNC,
 
-        /* C2_OUT_SYNC is the Timer external reset source 
+        /* C2_OUT_SYNC is the Timer external reset source
          */
         TMR2_C2_OUT_SYNC,
 
-        /* CCP1_OUT is the Timer external reset source 
+        /* CCP1_OUT is the Timer external reset source
          */
         TMR2_CCP1_OUT,
 
-        /* CCP2_OUT is the Timer external reset source 
+        /* CCP2_OUT is the Timer external reset source
          */
         TMR2_CCP2_OUT,
 
-        /* Reserved enum cannot be used 
+        /* Reserved enum cannot be used
          */
         TMR2_RESERVED,
 
-        /* Timer4 Postscale is the Timer external reset source 
+        /* Timer4 Postscale is the Timer external reset source
          */
         TMR2_T4POSTSCALED,
 
-        /* Timer6 Postscale is the Timer external reset source 
+        /* Timer6 Postscale is the Timer external reset source
          */
         TMR2_T6POSTSCALED,
 
-        /* ZCD1_Output is the Timer external reset source 
+        /* ZCD1_Output is the Timer external reset source
          */
         TMR2_ZCD1_OUTPUT,
 
-        /* LC1_out is the Timer external reset source 
+        /* LC1_out is the Timer external reset source
          */
         TMR2_LC1_OUT,
 
-        /* LC2_out is the Timer external reset source 
+        /* LC2_out is the Timer external reset source
          */
         TMR2_LC2_OUT,
 
-        /* LC3_out is the Timer external reset source 
+        /* LC3_out is the Timer external reset source
          */
         TMR2_LC3_OUT,
 
-        /* LC4_out is the Timer external reset source 
+        /* LC4_out is the Timer external reset source
          */
         TMR2_LC4_OUT,
 
-        /* PWM3_out is the Timer external reset source 
+        /* PWM3_out is the Timer external reset source
          */
         TMR2_PWM3_OUT,
 
-        /* PWM4_out is the Timer external reset source 
+        /* PWM4_out is the Timer external reset source
          */
         TMR2_PWM4_OUT
+
+
     } TMR2_HLT_EXT_RESET_SOURCE;
 
 
@@ -304,7 +305,7 @@ extern "C" {
         None
 
       @Comment
-        8ms Time base
+
 
       @Example
         <code>
@@ -421,6 +422,35 @@ extern "C" {
 
     /**
       @Summary
+        This function starts the TMR2.
+
+      @Description
+        This function starts the TMR2 operation.
+        This function must be called after the initialization of TMR2.
+
+      @Preconditions
+        Initialize  the TMR2 before calling this function.
+
+      @Param
+        None
+
+      @Returns
+        None
+
+      @Example
+        <code>
+        // Initialize TMR2 module
+
+        // Start TMR2
+        TMR2_StartTimer();
+
+        // Do something else...
+        </code>
+     */
+    void TMR2_StartTimer(void);
+
+    /**
+      @Summary
         This function stops the TMR2.
 
       @Description
@@ -450,6 +480,38 @@ extern "C" {
         </code>
      */
     void TMR2_Stop(void);
+
+    /**
+      @Summary
+        This function stops the TMR2.
+
+      @Description
+        This function stops the TMR2 operation.
+        This function must be called after the start of TMR2.
+
+      @Preconditions
+        Initialize  the TMR2 before calling this function.
+
+      @Param
+        None
+
+      @Returns
+        None
+
+      @Example
+        <code>
+        // Initialize TMR2 module
+
+        // Start TMR2
+        TMR2_StartTimer();
+
+        // Do something else...
+
+        // Stop TMR2;
+        TMR2_StopTimer();
+        </code>
+     */
+    void TMR2_StopTimer(void);
 
     /**
       @Summary
@@ -485,6 +547,41 @@ extern "C" {
         </code>
      */
     uint8_t TMR2_Counter8BitGet(void);
+
+    /**
+      @Summary
+        Reads the TMR2 register.
+
+      @Description
+        This function reads the TMR2 register value and return it.
+
+      @Preconditions
+        Initialize  the TMR2 before calling this function.
+
+      @Param
+        None
+
+      @Returns
+        This function returns the current value of TMR2 register.
+
+      @Example
+        <code>
+        // Initialize TMR2 module
+
+        // Start TMR2
+        TMR2_StartTimer();
+
+        // Read the current value of TMR2
+        if(0 == TMR2_ReadTimer())
+        {
+            // Do something else...
+
+            // Reload the TMR value
+            TMR2_LoadPeriodRegister();
+        }
+        </code>
+     */
+    uint8_t TMR2_ReadTimer(void);
 
     /**
       @Summary
@@ -524,6 +621,45 @@ extern "C" {
         </code>
      */
     void TMR2_Counter8BitSet(uint8_t timerVal);
+
+    /**
+      @Summary
+        Writes the TMR2 register.
+
+      @Description
+        This function writes the TMR2 register.
+        This function must be called after the initialization of TMR2.
+
+      @Preconditions
+        Initialize  the TMR2 before calling this function.
+
+      @Param
+        timerVal - Value to write into TMR2 register.
+
+      @Returns
+        None
+
+      @Example
+        <code>
+        #define PERIOD 0x80
+        #define ZERO   0x00
+
+        while(1)
+        {
+            // Read the TMR2 register
+            if(ZERO == TMR2_ReadTimer())
+            {
+                // Do something else...
+
+                // Write the TMR2 register
+                TMR2_WriteTimer(PERIOD);
+            }
+
+            // Do something else...
+        }
+        </code>
+     */
+    void TMR2_WriteTimer(uint8_t timerVal);
 
     /**
       @Summary
@@ -579,41 +715,128 @@ extern "C" {
 
     /**
       @Summary
-        Boolean routine to poll or to check for the match flag on the fly.
+        Load value to Period Register.
 
       @Description
-        This function is called to check for the timer match flag.
-        This function is usd in timer polling method.
+        This function writes the value to PR2 register.
+        This function must be called after the initialization of TMR2.
 
       @Preconditions
-        Initialize  the TMR2 module before calling this routine.
+        Initialize  the TMR2 before calling this function.
+
+      @Param
+        periodVal - Value to load into TMR2 register.
+
+      @Returns
+        None
+
+      @Example
+        <code>
+        #define PERIOD1 0x80
+        #define PERIOD2 0x40
+        #define ZERO    0x00
+
+        while(1)
+        {
+            // Read the TMR2 register
+            if(ZERO == TMR2_ReadTimer())
+            {
+                // Do something else...
+
+                if(flag)
+                {
+                    flag = 0;
+
+                    // Load Period 1 value
+                    TMR2_LoadPeriodRegister(PERIOD1);
+                }
+                else
+                {
+                     flag = 1;
+
+                    // Load Period 2 value
+                    TMR2_LoadPeriodRegister(PERIOD2);
+                }
+            }
+
+            // Do something else...
+        }
+        </code>
+     */
+    void TMR2_LoadPeriodRegister(uint8_t periodVal);
+
+    /**
+      @Summary
+        Timer Interrupt Service Routine
+
+      @Description
+        Timer Interrupt Service Routine is called by the Interrupt Manager.
+
+      @Preconditions
+        Initialize  the TMR2 module with interrupt before calling this isr.
 
       @Param
         None
 
       @Returns
-        true - timer match has occured.
-        false - timer match has not occured.
-
-      @Example
-        <code>
-        while(1)
-        {
-            // check the match flag
-            if(TMR2_HasOverflowOccured())
-            {
-                // Do something else...
-
-                // clear the TMR2 match interrupt flag
-                TMR2IF = 0;
-
-                // Reload the TMR2 value
-                TMR2_Reload();
-            }
-        }
-        </code>
+        None
      */
-    bool TMR2_HasOverflowOccured(void);
+    void TMR2_ISR(void);
+
+    /**
+      @Summary
+        Set Timer Interrupt Handler
+
+      @Description
+        This sets the function to be called during the ISR
+
+      @Preconditions
+        Initialize  the TMR2 module with interrupt before calling this.
+
+      @Param
+        Address of function to be set
+
+      @Returns
+        None
+     */
+    void TMR2_SetInterruptHandler(void *InterruptHandler);
+
+    /**
+      @Summary
+        Timer Interrupt Handler
+
+      @Description
+        This is a function pointer to the function that will be called during the ISR
+
+      @Preconditions
+        Initialize  the TMR2 module with interrupt before calling this isr.
+
+      @Param
+        None
+
+      @Returns
+        None
+     */
+    extern void (*TMR2_InterruptHandler)(void);
+
+    /**
+      @Summary
+        Default Timer Interrupt Handler
+
+      @Description
+        This is the default Interrupt Handler function
+
+      @Preconditions
+        Initialize  the TMR2 module with interrupt before calling this isr.
+
+      @Param
+        None
+
+      @Returns
+        None
+     */
+    void TMR2_DefaultInterruptHandler(void);
+
 
 #ifdef __cplusplus  // Provide C++ Compatibility
 
